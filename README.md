@@ -11,7 +11,7 @@ sudo apt-get install python3
 
 2. Install `Python3's Tkinter` on your computer.
 ```shell
-sudo pip3 install tkinter
+sudo apt install idle3 python3-tk
 ```
 
 3. Clone/download this folder to your computer.

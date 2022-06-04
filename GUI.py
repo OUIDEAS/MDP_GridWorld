@@ -1,16 +1,8 @@
-###########################################
-# @author:	AbdAlMoniem AlHifnawy			#
-#														#
-# @email:	hifnawy_moniem@hotmail.com 	#
-#														#
-# @date:		Thu Dec 1 5:28:03 PM 			#
-###########################################
-
 from tkinter import *
 import time
 from GridWorld import GridWorld
 from Policy import Policy
-from idlelib.textView import TextViewer
+from idlelib.textview import view_file
 
 #===============================================================================
 # MDPGUI - shows the map, q-values, utilities and 
