@@ -8,6 +8,7 @@
 # @date:		Thu Dec 1 5:28:03 PM 			#
 ###########################################
 
+from asyncore import file_dispatcher
 from tkinter import *
 from GridWorld import GridWorld
 from GUI import MDPGUI
@@ -37,21 +38,29 @@ def startSimulation(mode, w):
 		w.setRewards(-0.04, -1, 1)
 		w.setProbabilities(0.8, 0.1, 0.1, 0)
 		w.setDiscountFactor(1)
+		w.numberOfIterations = (1000)              # Default Number of Iterations
+		w.timeToLive = (3)                         # Default Max Run Time
 		g = MDPGUI(w)
 	elif mode == "2":
 		w.setRewards(-0.04, -1, 1)
 		w.setProbabilities(0.8, 0.1, 0.1, 0)
 		w.setDiscountFactor(0.9)
+		w.numberOfIterations = (1000)
+		w.timeToLive = (3)
 		g = MDPGUI(w)
 	elif mode == "3":
 		w.setRewards(-0.01, -1, 1)
 		w.setProbabilities(0.8, 0.1, 0.1, 0)
 		w.setDiscountFactor(1)
+		w.numberOfIterations = (1000)
+		w.timeToLive = (3)
 		g = MDPGUI(w)
 	elif mode == "4":	
 		w.setRewards(-2, -1, 1)
 		w.setProbabilities(0.8, 0.1, 0.1, 0)
 		w.setDiscountFactor(0.6)
+		w.numberOfIterations = (1000)
+		w.timeToLive = (3)
 		g = MDPGUI(w)
 	else:
 		mdpc = MDPChooser(w)
@@ -87,7 +96,7 @@ if __name__ == '__main__':
 		print(hlpStr)
 		exit()
 	
-	if len(sys.argv) < 2: showhelp()
+	if len(sys.argv) < 2 or len(sys.argv) > 3 : showhelp()
 	
 	elif len(sys.argv) == 2:
 		if not sys.argv[1].isdigit():
@@ -104,15 +113,15 @@ if __name__ == '__main__':
 		startSimulation(mode, w)
 
 	elif len(sys.argv) == 3:
-		file_path = sys.argv[2]
-		world = parseWorld(file_path)
-		w = GridWorld(world, discountFactor = 1)
-		mode = sys.argv[1]
-		startSimulation(mode, w)
-	else:
-		w = GridWorld([[GridWorld.CELL_VOID, GridWorld.CELL_VOID, GridWorld.CELL_VOID, GridWorld.CELL_EXIT], 
-					   			[GridWorld.CELL_VOID, GridWorld.CELL_WALL, GridWorld.CELL_VOID, GridWorld.CELL_PIT],
-					   			[GridWorld.CELL_VOID, GridWorld.CELL_WALL, GridWorld.CELL_VOID, GridWorld.CELL_WALL],
-					   			[GridWorld.CELL_VOID, GridWorld.CELL_VOID, GridWorld.CELL_VOID, GridWorld.CELL_VOID]], discountFactor = 1)
-
-		startSimulation(0, w)
+		if sys.argv[1].isdigit():
+			file_path = sys.argv[2]
+			world = parseWorld(file_path)
+			w = GridWorld(world, discountFactor = 1)
+			mode = sys.argv[1]
+			startSimulation(mode, w)
+		else:
+			w = GridWorld([[GridWorld.CELL_VOID, GridWorld.CELL_VOID, GridWorld.CELL_VOID, GridWorld.CELL_EXIT], 
+							[GridWorld.CELL_VOID, GridWorld.CELL_WALL, GridWorld.CELL_VOID, GridWorld.CELL_PIT],
+							[GridWorld.CELL_VOID, GridWorld.CELL_WALL, GridWorld.CELL_VOID, GridWorld.CELL_WALL],
+							[GridWorld.CELL_VOID, GridWorld.CELL_VOID, GridWorld.CELL_VOID, GridWorld.CELL_VOID]], discountFactor = 1)
+			startSimulation(0, w)
