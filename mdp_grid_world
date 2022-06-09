@@ -1,12 +1,9 @@
 #!/usr/bin/env python3
 
-###########################################
-# @author:	AbdAlMoniem AlHifnawy			#
-#														#
-# @email:	hifnawy_moniem@hotmail.com 	#
-#														#
-# @date:		Thu Dec 1 5:28:03 PM 			#
-###########################################
+#=============================================================
+#  mdp_grid_world - Starting place in the code, runs the 
+# 					setup and calls for settings
+#=============================================================
 
 from asyncore import file_dispatcher
 from tkinter import *
