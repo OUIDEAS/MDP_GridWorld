@@ -17,8 +17,8 @@ import time
 class Policy:
 	valueIterationEpsilon = 0.1
 	maxNumberOfIterations = 0		#for example the maps that have no exits
-	timeToLive = 0			#number of seconds to iterate before exiting (if algorithm stucks)
-	_pe_maxk = 50	#for policy evaluation, max number of iteration
+	timeToLive = 0			#number of seconds to iterate before exiting (if algorithm gets stuck)
+	_pe_maxk = 50	#for policy evaluation, max number of iterations
 		
 	world = None
 	
@@ -485,6 +485,8 @@ if __name__ == '__main__':
 			   [GridWorld.CELL_VOID, GridWorld.CELL_VOID, GridWorld.CELL_VOID, GridWorld.CELL_VOID]], discountFactor = 1 )
 	w.setRewards(-0.04, -1, 1)
 	w.setProbabilities(0.8, 0.1, 0.1, 0)
+	w.numberOfIterations = 1000
+	w.timeToLive = 3
 	print("GridWorld-----------")
 	print(w)
 	print("----------------")
