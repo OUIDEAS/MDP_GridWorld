@@ -1,11 +1,9 @@
 #!/usr/bin/env python3
 
 ###########################################
-# @author:	AbdAlMoniem AlHifnawy			#
-#														#
-# @email:	hifnawy_moniem@hotmail.com 	#
-#														#
-# @date:		Thu Dec 1 5:28:03 PM 			#
+# @author:	AbdAlMoniem AlHifnawy	
+#									
+# @email:	hifnawy_moniem@hotmail.com
 ###########################################
 
 import tkinter.ttk

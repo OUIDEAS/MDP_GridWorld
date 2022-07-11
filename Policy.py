@@ -116,7 +116,7 @@ class Policy:
 				possibilities = self.world.possiblePositionsFromAction((x,y), action) 
 				for _, nextPos, prob in possibilities:
 					summ += prob * self.utilities[nextPos[1]][nextPos[0]]
-				if (maxSum is None) or (summ > maxSum): maxSum = summ
+					if (maxSum is None) or (summ > maxSum): maxSum = summ
 			res = self.world.rewardAtCell(x, y) + self.world.discFactor * maxSum
 		else:
 			#we don't have any action to do, we have only own reward (i.w. V*(s) = R(s) + 0)
@@ -439,8 +439,8 @@ class Policy:
 		'''draw only the policy, you must call the other draw methods to draw the other things'''
 		#commented lines are part of an alternative way to draw the arrows
 		m = GridWorld.drawing_BoxMargin
-		arrs = int(GridWorld.drawing_BoxSide/4) #arrow base size
-		arrh = int(GridWorld.drawing_BoxSide/5) #arrow height
+		arrs = int(GridWorld.drawing_BoxSide/1.5) #arrow base size   WAS 4                               <--------- ARROW SIZE
+		arrh = int(GridWorld.drawing_BoxSide/1.25) #arrow height     WAS 5
 		s = GridWorld.drawing_BoxSide
 		s2 = math.ceil(s/2)
 		#s4 = math.ceil(s/4)
